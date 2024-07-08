@@ -15,15 +15,29 @@
 """
 
 
+# def twoSums(nums, target):
+#     for ind1 in range(len(nums)):
+#         for ind2 in range(ind1+1, len(nums)):
+#             if nums[ind1] + nums[ind2] == target:
+#                 return [ind1, ind2]
+#     return None
+
+
 def twoSums(nums, target):
-    for ind1 in range(len(nums)):
-        for ind2 in range(ind1+1, len(nums)):
-            if nums[ind1] + nums[ind2] == target:
-                return [ind1, ind2]
-    return None
+    seen = {}
+    for ind in range(len(nums)):
+        num = nums[ind]
+        if target - num in seen:
+            return [ind, seen[target - num]]
+        seen[num] = ind
 
 
 nums = [2, 7, 11, 15]
-target = 9
+target = 13
 
 result = twoSums(nums, target)
+
+if (result):
+    print(result[0], result[1])
+else:
+    print('Target not found')
